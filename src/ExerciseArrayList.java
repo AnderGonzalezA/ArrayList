@@ -35,15 +35,13 @@ public class ExerciseArrayList {
 					        	int check = Integer.parseInt(usernumber);
 					        	// Check that the number is positive
 					        	if (check>0) {
-					        		// Create an array with the number's digits
-					        		ArrayList<E> digits = new ArrayList<E>();
-					        		for (int i=0;i<usernumber.length();i++) {
-					        			digits.add(usernumber.charAt(i));
-					        		}
+					        		// Create an ArrayList with the number
+					        		ArrayList<String> digits = new ArrayList<String>();
+					        		digits.add(usernumber);
 						        	// Count the even digits of the number
 						        	int counter = 0;
 						        	for(int i=0;i<usernumber.length();i++) {
-						        		int digit = Character.getNumericValue(digits[i]);
+						        		int digit = Character.getNumericValue(digits.get(0).charAt(i));
 						        		if (digit % 2 == 0) {
 											counter++;
 										}
@@ -98,10 +96,6 @@ public class ExerciseArrayList {
 									        	// Count how many times the digit appears in the number
 									        	int counter = 0;
 									        	for (int i=0;i<numberDigits.length;i++) {
-									        		//int digit2 = Character.getNumericValue(digits[i]);
-									        		//if (digit2==check2) {
-								        				//counter++;
-								        			//}
 									        		if (charDigit==numberDigits[i]){
 									        			counter++;
 									        		}
