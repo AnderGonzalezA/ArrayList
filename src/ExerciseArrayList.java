@@ -31,17 +31,12 @@ public class ExerciseArrayList {
 			        			String usernumber = sc.next();
 								// Jump the token '/n'
 								sc.nextLine();
-			        			// Pass the value to an int variable
-					        	int check = Integer.parseInt(usernumber);
 					        	// Check that the number is positive
-					        	if (check>0) {
-					        		// Create an ArrayList with the number
-					        		ArrayList<String> digits = new ArrayList<String>();
-					        		digits.add(usernumber);
+					        	if (Integer.parseInt(usernumber)>0) {
 						        	// Count the even digits of the number
 						        	int counter = 0;
 						        	for(int i=0;i<usernumber.length();i++) {
-						        		int digit = Character.getNumericValue(digits.get(0).charAt(i));
+						        		int digit = Character.getNumericValue(usernumber.charAt(i));
 						        		if (digit % 2 == 0) {
 											counter++;
 										}
@@ -72,10 +67,8 @@ public class ExerciseArrayList {
 			        			String usernumber = sc.next();
 								// Jump the token '/n'
 								sc.nextLine();
-			        			// Pass the value to an int variable
-					        	int chek = Integer.parseInt(usernumber);
 					        	// Check that the number is positive
-					        	if (chek>0) {
+					        	if (Integer.parseInt(usernumber)>0) {
 					        		System.out.println("Please, enter a digit");
 					        		// Check that the user enters a number
 						        	if (sc.hasNextInt()) {
@@ -83,20 +76,18 @@ public class ExerciseArrayList {
 						        		String digit = sc.next();
 										// Jump the token '/n'
 										sc.nextLine();
-						        		// Pass the value to an int variable
-						        		int check2 = Integer.parseInt(digit);
 						        		// Check that the number is positive
-							        	if (check2>0) {
+							        	if (Integer.parseInt(digit)>0) {
 							        		// Check that the number is a digit
 								        	if (digit.length()==1) {
-								        		// Create an array with the digit's value
-								        		char charDigit = digit.charAt(0);
-								        		// Create an array with the previous number's digits
-									        	char[] numberDigits = usernumber.toCharArray();
+								        		ArrayList<Character> numberDigits = new ArrayList<Character>(usernumber.length());
+								        		for (int i=0;i<usernumber.length();i++) {
+								        			numberDigits.add(i,usernumber.charAt(i));
+								        		}
 									        	// Count how many times the digit appears in the number
 									        	int counter = 0;
-									        	for (int i=0;i<numberDigits.length;i++) {
-									        		if (charDigit==numberDigits[i]){
+									        	for (int i=0;i<numberDigits.size();i++) {
+									        		if (digit.charAt(0)==numberDigits.get(i)){
 									        			counter++;
 									        		}
 									        	}
@@ -140,10 +131,8 @@ public class ExerciseArrayList {
 			        			String usernumber = sc.next();
 								// Jump the token '/n'
 								sc.nextLine();
-			        			// Pass the value to an int variable
-					        	int chk = Integer.parseInt(usernumber);
 					        	// Check that the number is positive
-					        	if (chk>0) {
+					        	if (Integer.parseInt(usernumber)>0) {
 					        		// Print the inverted number
 					        		for (int index=usernumber.length()-1;index>=0;index--) {
 					        			System.out.print(usernumber.charAt(index));
@@ -175,13 +164,15 @@ public class ExerciseArrayList {
 			        			String usernumber = sc.next();
 								// Jump the token '/n'
 								sc.nextLine();
-			        			// Create an array with the number's digits
-			        			char[] digits = usernumber.toCharArray();
+								ArrayList<Character> digits = new ArrayList<Character>(usernumber.length());
+				        		for (int i=0;i<usernumber.length();i++) {
+				        			digits.add(i,usernumber.charAt(i));
+				        		}
 			        			// Check that all the digits are 1 or 0
 			        			int index = 0;
 			        			boolean encountered = false;
-			        			while ((index < digits.length) && (!encountered)) {
-			        				if (digits[index]!='0' && digits[index]!='1') {
+			        			while ((index < digits.size()) && (!encountered)) {
+			        				if (digits.get(index)!='0' && digits.get(index)!='1') {
 			        					encountered = true;
 			        				}
 			        			index++;
@@ -212,8 +203,6 @@ public class ExerciseArrayList {
 			            break;
 			        case 5:
 			        	System.out.println("Please, enter a sentence.");
-			        	// Jump the token '/n' and go to the next line
-			        	sc.nextLine();
 			        	// Create a string object with the user's sentence
 	        			String sentence = sc.nextLine();
 	        			// Open a loop
@@ -226,15 +215,14 @@ public class ExerciseArrayList {
 							sc.nextLine();
 			        		// Check that the user entered just a character
 							if(letter.length()<2) {
-								// Create an array with the character
-								char letter2[]= letter.toCharArray();
+								ArrayList<Character> letter2= new ArrayList<Character>(letter.length());
+								letter2.add(letter.charAt(0));
 								// Create an array with the sentence's words
 								String[] words =sentence.split(" ");
 								// Count how many words of the sentence start with the letter of the user
 								int counter=0;
 								for (String word: words) {
-								    char letters[]= word.toCharArray();
-								    if (letter2[0]==letters[0]) {
+								    if (letter2.get(0)==word.charAt(0)) {
 								        counter++;
 								    }
 								}
@@ -249,8 +237,6 @@ public class ExerciseArrayList {
 			            break;
 			        case 6:
 			        	System.out.println("Please, enter a sentence.");
-			        	// Jump the token '/n' and go to the next line
-	        			sc.nextLine();
 			        	// Create a string object with the user's sentence
 	        			String sentence2 = sc.nextLine();
 	        			// Open a loop
@@ -264,7 +250,7 @@ public class ExerciseArrayList {
 			        		// Check that the user entered just a character
 							if(letter.length()<2) {
 								// Create an array with the character
-								char letter2[]= letter.toCharArray();
+								char[] letter2= letter.toCharArray();
 								// Create an array with the sentence's words
 								String[] words =sentence2.split(" ");
 								// Count how many words of the sentence end with the letter of the user
